@@ -18,7 +18,7 @@ class DC_MOTORS(object):
 		- left_id: the ID of the left motor, (1)
 		- right_id: the ID of the right motor, (2)
 		-stop_at_exit: flag used make motors stop the program exits
-x		(want to prevent a crash ofc)
+		(want to prevent a crash ofc)
 		"""
 		#initializing the motors
 		self._mh = Adafruit_MotorHAT(addr)
