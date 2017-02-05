@@ -16,7 +16,7 @@ bottom = 0.0
 top = 1000.0
 
 #important robot dimensions
-TPR = 48 #ticks per rotation
+TPR = 16327 #ticks per rotation may need to multiply by 2 https://www.pololu.com/product/2273
 RW = 36.5 #radius of wheels (mm)
 L = 165.0 #Length between centers of the two wheels (mm))
 PI2 = 2*math.pi
@@ -49,14 +49,15 @@ def main():
             print theta
             theta_trn = theta_trn + dtheta
         
-            dx = cos(theta) * (PI2*RW * (left_encoder.get_ticks()/TPR))
+            dx = math.cos(theta) * (PI2*RW * (left_encoder.get_ticks()/TPR))
             x = x + dx
-            dy = sin(theta) * (PI2*RW * (right_encoder.get_ticks()/TPR))
+            dy = math.sin(theta) * (PI2*RW * (right_encoder.get_ticks()/TPR))
             y = y + dy
             print "ticks:", left_encoder.get_ticks(), right_encoder.get_ticks()
             left_encoder.reset()
             right_encoder.reset()
             print "POSE:", x, y, theta
+            time.sleep(0.5)
 
         motors.stop()
     finally:
