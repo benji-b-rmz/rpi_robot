@@ -17,14 +17,14 @@ encoder2 = encoders.Encoder(16,19)
 try:
     print "\nMoving the motors for 5 sec, FORWARD Dir\n"
     motors.move(FORWARD,FORWARD,150,150,3)
-    print "ticks:", encoder1.get_total_ticks(), encoder2.get_total_ticks()
+    print "ticks:", encoder1.get_ticks(), encoder2.get_ticks()
     motors.stop()
 
     encoder1.reset()
     encoder2.reset()
 
     motors.move(BACKWARD, BACKWARD, 200,200, 2)
-    print encoder1.get_total_ticks(), encoder2.get_total_ticks()
+    print encoder1.get_ticks(), encoder2.get_ticks()
 #print "now, moving the right motor backwards"
 #motors.move(FORWARD,BACKWARD,150,150,3)
 finally:

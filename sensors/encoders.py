@@ -35,7 +35,7 @@ class Encoder(object):
         self.b_ticks += 1
         self.tot_call() 
     
-    def get_total_ticks(self):
+    def get_ticks(self):
         return self.tot_ticks
     
     def get_a_ticks(self):

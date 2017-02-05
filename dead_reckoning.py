@@ -33,8 +33,8 @@ def main():
     dy = 0.0
     theta_trn = 0.0
     motors = dcmotors.Motors()
-    left_encoder = encoder.Encoder(22,23)
-    right_encoder = encoder.Encoder(16,19)
+    left_encoder = encoders.Encoder(22,23)
+    right_encoder = encoders.Encoder(16,19)
     #created motors and encoder objects
     try:
         print "Moving the car"
