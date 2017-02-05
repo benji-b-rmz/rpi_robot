@@ -3,7 +3,7 @@
 #testing out the ranger class from ultrasonic_rangers.py
 
 import time
-from classes import rangers
+from sensors import rangers
 
 #initializing the ranger object with the pins
 back_left_sensor = rangers.ranger(17,4)

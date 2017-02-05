@@ -3,7 +3,8 @@
 # creating a client to test out dc_motor class functions
 import sys, os
 import time
-from classes import motors, encoders, rangers
+from actuators import motors
+from sensors import encoders, rangers
 import RPi.GPIO as GPIO
 
 FORWARD = 1
