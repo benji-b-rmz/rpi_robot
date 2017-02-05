@@ -3,14 +3,14 @@
 # creating a client to test out dc_motor class functions
 import sys, os
 import time
-from actuators import motors
+from actuators import dcmotors
 from sensors import encoders, rangers
 import RPi.GPIO as GPIO
 
 FORWARD = 1
 BACKWARD = 2
 
-motors = motors.Motors()
+motors = dcmotors.Motors()
 encoder1 = encoders.Encoder(22,23)
 encoder2 = encoders.Encoder(16,19)
 #created the new motors object

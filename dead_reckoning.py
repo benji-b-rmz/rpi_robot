@@ -3,7 +3,7 @@
 #using the encoders for odometry, pose(x, y, theta)
 
 import sys, os, time
-from actuators import motors
+from actuators import dcmotors
 from sensors import encoders
 import RPi.GPIO as GPIO
 import math
@@ -32,7 +32,7 @@ def main():
     dx = 0.0
     dy = 0.0
     theta_trn = 0.0
-    motors = motors.Motors()
+    motors = dcmotors.Motors()
     left_encoder = encoder.Encoder(22,23)
     right_encoder = encoder.Encoder(16,19)
     #created motors and encoder objects
@@ -58,6 +58,7 @@ def main():
             right_encoder.reset()
             print "POSE:", x, y, theta
 
+        motors.stop()
     finally:
         pass        
     
