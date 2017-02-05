@@ -3,8 +3,8 @@
 #using the encoders for odometry, pose(x, y, theta)
 
 import sys, os, time
-from dc_motors import DC_MOTORS
-from encoder import ENCODER
+from actuators import motors
+from sensors import encoders
 import RPi.GPIO as GPIO
 import math
 
@@ -15,30 +15,16 @@ right = 1000.0
 bottom = 0.0
 top = 1000.0
 
-#important car dimensions
+#important robot dimensions
 TPR = 48 #ticks per rotation
 RW = 36.5 #radius of wheels (mm)
 L = 165.0 #Length between centers of the two wheels (mm))
 PI2 = 2*math.pi
 
-#important odometry variables
-dtheta = 0.0
-theta = math.pi/2
-x = 50.0
-y = 50.0
-dx = 0.0
-dy = 0.0
-theta_trn = 0.0
-
 
 def main():
-   #important car dimensions
-    TPR = 48 #ticks per rotation
-    RW = 36.5 #radius of wheels (mm)
-    L = 165.0 #Length between centers of the two wheels (mm))
-    PI2 = 2*math.pi
 
-#important odometry variables
+#important odometry variables for initial pose
     dtheta = 0.0
     theta = math.pi/2
     x = 50.0
@@ -46,9 +32,9 @@ def main():
     dx = 0.0
     dy = 0.0
     theta_trn = 0.0
-    motors = DC_MOTORS()
-    encoder1 = ENCODER(22,23)
-    encoder2 = ENCODER(16,19)
+    motors = motors.Motors()
+    encoder1 = encoder.Encoder(22,23)
+    encoder2 = encoder.Encoder(16,19)
     #created motors and encoder objects
     try:
         print "Moving the car"
