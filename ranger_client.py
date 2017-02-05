@@ -3,10 +3,10 @@
 #testing out the ranger class from ultrasonic_rangers.py
 
 import time
-from ultrasonic_rangers import ranger
+from classes import rangers
 
 #initializing the ranger object with the pins
-back_left_sensor = ranger(17,4)
+back_left_sensor = rangers.ranger(17,4)
 
 for x in range(10):
     time.sleep(0.5)

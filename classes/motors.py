@@ -11,7 +11,7 @@ import time
 import atexit
 
 #creating a class to control 2 dc motors using the Adafruit_MotorHat
-class Motor(object):
+class Motors(object):
 	def __init__(self, addr=0x60, left_id=2, right_id=1, stop_at_exit=True):
 		"""creating an object to control 2 dc motors, 
 		-addr: The I2C address of the motor HAT
