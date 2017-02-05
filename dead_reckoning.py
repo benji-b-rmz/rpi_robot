@@ -33,28 +33,29 @@ def main():
     dy = 0.0
     theta_trn = 0.0
     motors = motors.Motors()
-    encoder1 = encoder.Encoder(22,23)
-    encoder2 = encoder.Encoder(16,19)
+    left_encoder = encoder.Encoder(22,23)
+    right_encoder = encoder.Encoder(16,19)
     #created motors and encoder objects
     try:
         print "Moving the car"
         motors.move(FORWARD, FORWARD, 150, 150, 3)
-        print "edge counts:", encoder1.get_ticks(), encoder2.get_ticks()
-        encoder1.reset()
-        encoder2.reset()
+        print "edge counts:", left_encoder.get_ticks(), right_encoder.get_ticks()
+        left_encoder.reset()
+        right_encoder.reset()
         motors.move(FORWARD, FORWARD, 150,150)
         while (y < 500):
-            dtheta = math.pi * (RW/L) * (float(abs(encoder1.get_ticks())-abs(encoder2.get_ticks()))/TPR)
+            dtheta = math.pi * (RW/L) * (float(abs(left_encoder.get_ticks())-abs(right_encoder.get_ticks()))/TPR)
             theta = math.fmod(theta + dtheta, PI2)
+            print theta
             theta_trn = theta_trn + dtheta
         
-            dx = math.pi * RW * math.cos(theta) * (float((encoder1.get_ticks() + encoder2.get_ticks())/TPR))
+            dx = cos(theta) * (PI2*RW * (left_encoder.get_ticks()/TPR))
             x = x + dx
-            dy = math.pi * RW * math.sin(theta) * (float((encoder1.get_ticks() + encoder2.get_ticks())/TPR))
+            dy = sin(theta) * (PI2*RW * (right_encoder.get_ticks()/TPR))
             y = y + dy
-            print "ticks:", encoder1.get_ticks(), encoder2.get_ticks()
-            encoder1.reset()
-            encoder2.reset()
+            print "ticks:", left_encoder.get_ticks(), right_encoder.get_ticks()
+            left_encoder.reset()
+            right_encoder.reset()
             print "POSE:", x, y, theta
 
     finally:
