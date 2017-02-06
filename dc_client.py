@@ -16,14 +16,14 @@ encoder2 = encoders.Encoder(16,19)
 #created the new motors object
 try:
     print "\nMoving the motors for 5 sec, FORWARD Dir\n"
-    motors.move(FORWARD,FORWARD,150,150,3)
+    motors.move(BACKWARD,FORWARD,150,150,3)
     print "ticks:", encoder1.get_ticks(), encoder2.get_ticks()
     motors.stop()
 
     encoder1.reset()
     encoder2.reset()
 
-    motors.move(BACKWARD, BACKWARD, 200,200, 2)
+    motors.move(BACKWARD, BACKWARD, 200,200, 1)
     print encoder1.get_ticks(), encoder2.get_ticks()
 #print "now, moving the right motor backwards"
 #motors.move(FORWARD,BACKWARD,150,150,3)

@@ -40,7 +40,7 @@ def main():
         print "edge counts:", left_encoder.get_ticks(), right_encoder.get_ticks()
         left_encoder.reset()
         right_encoder.reset()
-        motors.move(FORWARD, FORWARD, 150,150)
+        motors.move(FORWARD, FORWARD, 200,200)
         while (y < 500):
             dtheta = math.pi * (RW/L) * (float(abs(left_encoder.get_ticks())-abs(right_encoder.get_ticks()))/TPR)
             theta = math.fmod(theta + dtheta, PI2)
@@ -58,10 +58,47 @@ def main():
             print "POSE:", x, y, theta
             time.sleep(0.01)
 
-        motors.stop()
+        
+        motors.move(BACK, FORWARD, 100, 200,1)
+        while( theta > 0.1 ):
+            dtheta = math.pi * (RW/L) * (float(abs(left_encoder.get_ticks()) - abs(right_encoder.get_ticks()))/TPR)
+            theta = math.fmod(theta + dtheta, PI2)
+            print theta
+
+            dx = math.cos(theta) * (PI2*RW * (left_encoder.get_ticks()/TPR))
+            x = x + dx
+            dy = math.sin(theta) * (PI2*RW * (right_encoder.get_ticks()/TPR))
+            y = y + dy
+            print "cos(theta), sin(theta)", math.cos(theta), math.sin(theta)
+            print "dx, dy:",  dx, dy
+            print "ticks:", left_encoder.get_ticks(), right_encoder.get_ticks()
+            left_encoder.reset()
+            right_encoder.reset()
+            print "POSE:", x, y, theta
+            time.sleep(0.01)
+        motors.move(FORWARD, FORWARD, 150, 150 )
+        while( y > 0):
+            dtheta = math.pi * (RW/L) * (float(abs(left_encoder.get_ticks())- abs(right_encoder.get_ticks()))/TPR)
+            theta = math.fmod(theta + dtheta, PI2)
+            print theta
+
+            dx = math.cos(theta) * (PI2*RW * (left_encoder.get_ticks()/TPR))
+            x = x + dx
+            dy = math.sin(theta) * (PI2*RW * (right_encoder.get_ticks()/TPR))
+            y = y + dy
+            print "cos(theta), sin(theta)", math.cos(theta), math.sin(theta)
+            print "dx, dy:",  dx, dy
+            print "ticks:", left_encoder.get_ticks(), right_encoder.get_ticks()
+            left_encoder.reset()
+            right_encoder.reset()
+            print "POSE:", x, y, theta
+            time.sleep(0.01)
+
+	motors.stop()
     finally:
         pass        
     
 
 if __name__ == "__main__":
     main()
+
